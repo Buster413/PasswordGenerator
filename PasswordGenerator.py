@@ -19,47 +19,58 @@ while True:
 current_length = password_length
 
 # get number of uppercase letters in the password, and check to make sure it is valid
-while True:
-    value = raw_input("How many uppercase letters do you want your password to have (%s characters remaining)?\n" % current_length)
-    try:
-        num_uppercase = int(value)
-    except ValueError:
-        print("\nThe number of uppercase numbers must be an integer.\n")
-        continue
-    if num_uppercase > current_length or num_uppercase < 0:
-        print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
-        continue
-    break
-current_length -= num_uppercase
+if current_length != 0:
+    while True:
+        value = raw_input("How many uppercase letters do you want your password to have (%s characters remaining)?\n" % current_length)
+        try:
+            num_uppercase = int(value)
+        except ValueError:
+            print("\nThe number of uppercase numbers must be an integer.\n")
+            continue
+        if num_uppercase > current_length or num_uppercase < 0:
+            print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
+            continue
+        current_length -= num_uppercase
+        break
+else:
+    num_uppercase = 0
+    num_numbers = 0
+    num_symbols = 0
 
 # get number of numbers in the password, and check to make sure it is valid
-while True:
-    value = raw_input("How many numbers do you want your password to have (%s characters remaining)?\n" % current_length)
-    try:
-        num_numbers = int(value)
-    except ValueError:
-        print("\nThe number of numbers must be an integer.\n")
-        continue
-    if num_numbers > current_length or num_numbers < 0:
-        print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
-        continue
-    break
-current_length -= num_numbers
+if current_length != 0:
+    while True:
+        value = raw_input("How many numbers do you want your password to have (%s characters remaining)?\n" % current_length)
+        try:
+            num_numbers = int(value)
+        except ValueError:
+            print("\nThe number of numbers must be an integer.\n")
+            continue
+        if num_numbers > current_length or num_numbers < 0:
+            print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
+            continue
+        current_length -= num_numbers
+        break
+else:
+    num_numbers = 0
+    num_symbols = 0
 
 # get number of symbols in the password, and check to make sure it is valid
-while True:
-    value = raw_input("How many symbols do you want your password to have (%s characters remaining)?\n" % current_length)
-    try:
-        num_symbols = int(value)
-    except ValueError:
-        print("\nThe number of numbers must be an integer.\n")
-        continue
-    if num_symbols > current_length or num_symbols < 0:
-        print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
-        continue
-    break
-current_length -= num_symbols
-
+if current_length != 0:
+    while True:
+        value = raw_input("How many symbols do you want your password to have (%s characters remaining)?\n" % current_length)
+        try:
+            num_symbols = int(value)
+        except ValueError:
+            print("\nThe number of numbers must be an integer.\n")
+            continue
+        if num_symbols > current_length or num_symbols < 0:
+            print("The chosen number cannot exceed the number of characters remaining in the password, or be less than zero.\n")
+            continue
+        current_length -= num_symbols
+        break
+else:
+    num_symbols = 0
 
 # create password
 password = ''.join([random.choice(string.ascii_uppercase) for n in xrange(num_uppercase)] #  add uppercase letters
